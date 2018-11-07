@@ -27,8 +27,22 @@ function clickLigne(item){
 		myStopList.attr('id' , 'showstop')
 		$('#showstop').replaceWith(myStopList)
 		myStopList.append($('<h1> Arrets de la lignes ' + item.shortName + ' </h1>'))
+
+		let markers = {
+			color :'#ff0000',
+			stops : []
+		}
+
 		data.physicalStops.physicalStop.map((item , i) => {
 				myStopList.append($('<li>' + item.name +' ( '+ item.x +','+ item.y +' )</li>'))
+				markers.stops.push({
+					lat : item.y,
+					long : item.x,
+					name : item.name
+				})
 			}, myStopList)
+		
+		
+		init_map('mapLigne' , markers  )
 	})
 }
