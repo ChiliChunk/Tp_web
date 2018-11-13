@@ -1,0 +1,13 @@
+.card .imgHero {
+   z-index: 1;
+   position: absolute;
+}
+
+.card .dos{
+    z-index: 2;
+    position: absolute;
+}
+
+.card .imgHero:hover {
+    z-index: 3;
+}
