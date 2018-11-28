@@ -8,7 +8,7 @@
     <footer class = "text-secondary">
       test footer
 
-      
+
     </footer>
   </div>
   </template>
@@ -24,6 +24,7 @@
     data : function() {
       return({
         tabHero : [],
+        cardFlipped : []
       })
     },
     props: {
@@ -38,8 +39,8 @@
         for (i = 0 ; i < 6 ; i++){ // on selectionne 6 champions au hasard
          let rand = Math.floor((Math.random() * Object.keys(champions.data).length))
           let alias = Object.keys(champions.data)[rand]
-          this.tabHero.push({name : alias , src : alias+"_0.jpg" , isFlipped : false})
-          this.tabHero.push({name : alias , src : alias+"_1.jpg" , isFlipped : false})
+          this.tabHero.push({name : alias , src : alias+"_0.jpg" , isFlipped : true, isFlippable : true})
+          this.tabHero.push({name : alias , src : alias+"_1.jpg" , isFlipped : true, isFlippable : true})
         }
         this.tabHero = this.shuffle(this.tabHero)
       },
@@ -51,7 +52,28 @@
         return a;
       },
       retourner : function (index){
-        this.tabHero[index].isFlipped = !this.tabHero[index].isFlipped
+        if(this.cardFlipped.length === 2){
+          console.log(this.cardFlipped)
+          if (this.cardFlipped[0] === this.cardFlipped[1]){
+            //ce sont les meme
+          }
+          else{
+            this.cardFlipped[0].isFlippable = true
+            this.cardFlipped[1].isFlippable = true
+          }
+          this.cardFlipped = []
+          this.tabHero.map( (item , index) => {
+            if (item.isFlipped ===   false && item.isFlippable === true){
+              item.isFlipped = true
+            }
+          })
+        }
+        if (this.tabHero[index].isFlippable){
+          this.tabHero[index].isFlipped = !this.tabHero[index].isFlipped
+          this.tabHero[index].isFlippable = false
+          this.cardFlipped.push(this.tabHero[index])
+        }
+
       }
     }
   };

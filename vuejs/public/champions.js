@@ -1,6 +1,6 @@
 export default
 {
-    "data": { 
+    "data": {
         "Aatrox": {
             "id": 266,
             "image": {
