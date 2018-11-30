@@ -39,8 +39,8 @@
         for (i = 0 ; i < 6 ; i++){ // on selectionne 6 champions au hasard
          let rand = Math.floor((Math.random() * Object.keys(champions.data).length))
           let alias = Object.keys(champions.data)[rand]
-          this.tabHero.push({name : alias , src : alias+"_0.jpg" , isFlipped : true, isFlippable : true})
-          this.tabHero.push({name : alias , src : alias+"_1.jpg" , isFlipped : true, isFlippable : true})
+          this.tabHero.push({name : alias , src : alias+"_0.jpg" , isFlipped : true, sFlippable : true})
+          this.tabHero.push({name : alias , src : alias+"_1.jpg" , isFlipped : true, sFlippable : true})
         }
         this.tabHero = this.shuffle(this.tabHero)
       },
